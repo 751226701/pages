@@ -1,0 +1,214 @@
+body {
+  background: transparent;
+  min-height: 100%;
+}
+.rob-download-root,
+.rob-download-root * {
+  box-sizing: border-box;
+}
+.rob-download-root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 32px 20px 56px;
+  line-height: 1.6;
+  color: #334155;
+  font-size: 16px;
+}
+body .rob-download-root {
+  background: transparent;
+  min-height: 100vh;
+}
+.rob-download-root .rob-page-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.rob-download-root h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #0369a1;
+  letter-spacing: 0.02em;
+}
+.rob-download-root .rob-subtitle {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.rob-download-root section {
+  margin-bottom: 28px;
+}
+.rob-download-root section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0284c7;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(2, 132, 199, 0.25);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rob-download-root .rob-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.rob-download-root .rob-item:hover {
+  border-color: #7dd3fc;
+  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.08);
+}
+.rob-download-root .rob-item.rob-latest {
+  border-color: #7dd3fc;
+  background: #f0f9ff;
+}
+.rob-download-root .rob-item.rob-latest:hover {
+  border-color: #0284c7;
+  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.15);
+}
+.rob-download-root .rob-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+.rob-download-root .rob-item-header:hover {
+  background: rgba(2, 132, 199, 0.06);
+}
+.rob-download-root .rob-item.rob-latest .rob-item-header:hover {
+  background: rgba(2, 132, 199, 0.08);
+}
+.rob-download-root .rob-item-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.rob-download-root .rob-item-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1rem;
+}
+.rob-download-root .rob-item.rob-latest .rob-item-title {
+  color: #0369a1;
+}
+.rob-download-root .rob-item-date {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.rob-download-root .rob-item.rob-latest .rob-item-date {
+  color: #0284c7;
+}
+.rob-download-root .rob-item-actions {
+  display: flex;
+  align-items: center;
+}
+.rob-download-root .rob-btn-download {
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .2s;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+.rob-download-root .rob-btn-download:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+}
+.rob-download-root .rob-item-body {
+  padding: 0 18px 14px;
+  border-top: 1px solid #e2e8f0;
+}
+.rob-download-root .rob-item.rob-latest .rob-item-body {
+  border-top-color: #bae6fd;
+}
+.rob-download-root .rob-item-body-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+  margin: 12px 0 8px;
+  padding: 0;
+}
+.rob-download-root .rob-item-body-inner {
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #475569;
+}
+.rob-download-root .rob-item-body-inner ul {
+  margin: 0;
+  padding-left: 1.25em;
+  list-style: disc;
+}
+.rob-download-root .rob-item-body-inner li {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.rob-download-root .rob-item.rob-latest .rob-item-body-inner {
+  color: #334155;
+}
+/* details/summary: 隐藏浏览器默认三角 */
+.rob-download-root .rob-item summary {
+  list-style: none;
+}
+.rob-download-root .rob-item summary::-webkit-details-marker {
+  display: none;
+}
+.rob-download-root .rob-item summary::marker {
+  display: none;
+}
+/* 配置环境 */
+.rob-download-root .rob-config-block {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 14px 18px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.rob-download-root .rob-config-block:hover {
+  border-color: #7dd3fc;
+  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.08);
+}
+.rob-download-root .rob-config-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.rob-download-root .rob-config-list {
+  margin: 0;
+  padding: 0;
+}
+.rob-download-root .rob-config-row {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 6px;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.rob-download-root .rob-config-row:last-child {
+  margin-bottom: 0;
+}
+.rob-download-root .rob-config-row dt {
+  flex-shrink: 0;
+  font-weight: 500;
+  color: #334155;
+  margin: 0;
+}
+.rob-download-root .rob-config-row dd {
+  margin: 0 0 0 4px;
+  color: #475569;
+}
