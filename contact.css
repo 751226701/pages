@@ -3,7 +3,7 @@
   --rob-blue-dark: #0369a1;
   --rob-blue-light: #0ea5e9;
   --rob-blue-lighter: #7dd3fc;
-  --rob-blue-bg: #f0f9ff;
+  --rob-blue-bg: #f5fbff;
   --rob-gold: #d4a017;
   --rob-gold-light: #e8b82e;
   --rob-gold-dark: #b8860b;
@@ -34,8 +34,16 @@
 }
 
 .rob-contact-section {
-  padding: 10px 20px;
+  padding: 30px 20px 40px;
   background: var(--rob-white);
+}
+
+.rob-contact-section.rob-section-alt {
+  padding: 20px 20px 20px;
+}
+
+.rob-contact-section.rob-section-alt:last-of-type {
+  padding: 20px 20px 60px;
 }
 
 .rob-contact-section:first-of-type {
@@ -43,7 +51,7 @@
 }
 
 .rob-section-alt {
-  background: var(--rob-gray-bg);
+  background: var(--rob-blue-bg);
 }
 
 .rob-contact-container {
@@ -74,7 +82,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--rob-blue-dark);
-  margin: 32px 0 24px;
+  margin: 30px 0 20px;
   letter-spacing: 0.02em;
 }
 
@@ -131,7 +139,7 @@
 
 .rob-coop-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) auto;
+  grid-template-columns: repeat(2, 1fr) auto;
   gap: 24px;
   align-items: start;
 }
@@ -166,23 +174,32 @@
   text-align: center;
 }
 
+.rob-qr-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .rob-qr-title {
   font-size: 1rem;
   font-weight: 600;
   color: var(--rob-gray-dark);
-  margin: 0 0 12px;
+  margin: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 8px;
 }
 
 .rob-qr-wrap {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
 }
 
 .rob-qr-img {
   display: block;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   border-radius: 8px;
   border: 1px solid var(--rob-border);
