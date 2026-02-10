@@ -1,0 +1,210 @@
+/* 页脚 - 嵌入用，类名限定在 .rob-footer-root 内 */
+.rob-footer-root {
+  --rob-f-blue: #0284c7;
+  --rob-f-cyan: #0ea5e9;
+  --rob-f-gray: #334155;
+  --rob-f-gray-light: #64748b;
+  --rob-f-gray-lighter: #94a3b8;
+  --rob-f-border: #e2e8f0;
+  --rob-f-white: #ffffff;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--rob-f-white);
+  border-top: 1px solid var(--rob-f-border);
+  color: var(--rob-f-gray);
+}
+
+.rob-footer-root,
+.rob-footer-root * {
+  box-sizing: border-box;
+}
+
+.rob-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+}
+
+.rob-footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 32px 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rob-f-border);
+}
+
+.rob-footer-right {
+  display: flex;
+  gap: 28px;
+  min-width: 0;
+}
+
+.rob-footer-right .rob-footer-col {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .rob-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .rob-footer-right {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .rob-footer-right {
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+.rob-footer-col {
+  min-width: 0;
+}
+
+.rob-footer-brand {
+  padding-right: 16px;
+}
+
+.rob-footer-logo {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.rob-footer-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.rob-footer-logo:hover .rob-footer-logo-img {
+  opacity: 0.85;
+}
+
+.rob-footer-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--rob-f-gray-light);
+  margin: 0 0 12px;
+}
+
+.rob-footer-desc-sub {
+  margin-bottom: 0;
+  font-size: 0.8125rem;
+  color: var(--rob-f-gray-light);
+}
+
+.rob-footer-heading {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--rob-f-gray);
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+}
+
+.rob-footer-heading a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.rob-footer-heading a:hover {
+  color: var(--rob-f-cyan);
+}
+
+.rob-footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rob-footer-links li {
+  margin-bottom: 10px;
+}
+
+.rob-footer-links a {
+  font-size: 0.875rem;
+  color: var(--rob-f-gray-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.rob-footer-links a:hover {
+  color: var(--rob-f-cyan);
+}
+
+.rob-footer-follow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rob-f-gray);
+  margin: 16px 0 10px;
+}
+
+.rob-footer-social {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rob-footer-social a {
+  font-size: 0.8125rem;
+  color: var(--rob-f-gray-light);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--rob-f-border);
+  border-radius: 4px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.rob-footer-social a:hover {
+  color: var(--rob-f-cyan);
+  border-color: var(--rob-f-cyan);
+}
+
+.rob-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0 24px;
+  font-size: 0.8125rem;
+  color: var(--rob-f-gray-lighter);
+}
+
+.rob-footer-legal a {
+  color: var(--rob-f-gray-lighter);
+  text-decoration: none;
+  margin: 0 4px;
+}
+
+.rob-footer-legal a:hover {
+  color: var(--rob-f-cyan);
+}
+
+.rob-footer-sep {
+  margin: 0 4px;
+  color: var(--rob-f-border);
+}
+
+.rob-footer-icp {
+  margin: 16px 0 0;
+  font-size: 0.8125rem;
+  color: var(--rob-f-gray-light);
+}
+
+.rob-footer-icp a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rob-footer-icp a:hover {
+  color: var(--rob-f-cyan);
+}
