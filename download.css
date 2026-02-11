@@ -339,8 +339,3 @@ body {
   min-width: 0;
 }
 
-/* 兼容旧类名 */
-.rob-download-root .rob-item,
-.rob-download-root .rob-item-header {
-  /* 已用 .rob-card / .rob-card-header 替代，此处保留空规则便于日后清理 */
-}
