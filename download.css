@@ -1,214 +1,346 @@
-body {
-  background: transparent;
-  min-height: 100%;
+/* ========== 变量与基础 ========== */
+.rob-download-root {
+  --rob-blue: #0284c7;
+  --rob-blue-dark: #0369a1;
+  --rob-blue-light: #0ea5e9;
+  --rob-blue-lighter: #7dd3fc;
+  --rob-blue-bg: #f0f9ff;
+  --rob-gold: #d4a017;
+  --rob-gold-light: #e8b82e;
+  --rob-gold-bg: #fef9e7;
+  --rob-gray: #334155;
+  --rob-gray-light: #64748b;
+  --rob-gray-dark: #1e293b;
+  --rob-white: #ffffff;
+  --rob-border: #e2e8f0;
+  --rob-shadow: 0 4px 20px rgba(2, 132, 199, 0.08);
+  --rob-shadow-hover: 0 8px 32px rgba(2, 132, 199, 0.12);
+  --rob-radius: 14px;
+  --rob-radius-sm: 10px;
 }
+
 .rob-download-root,
 .rob-download-root * {
   box-sizing: border-box;
 }
+
+body {
+  background: transparent;
+  min-height: 100%;
+}
+
 .rob-download-root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 32px 20px 56px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 56px;
   line-height: 1.6;
-  color: #334155;
+  color: var(--rob-gray);
   font-size: 16px;
-}
-body .rob-download-root {
-  background: transparent;
   min-height: 100vh;
 }
-.rob-download-root .rob-page-header {
+
+/* ========== 顶部 Hero ========== */
+.rob-download-hero {
   text-align: center;
-  margin-bottom: 28px;
+  padding: 48px 24px 40px;
+  margin-bottom: 8px;
+  background: linear-gradient(160deg, var(--rob-blue-bg) 0%, var(--rob-white) 60%);
+  border-radius: 0 0 var(--rob-radius) var(--rob-radius);
 }
-.rob-download-root h1 {
+
+.rob-download-title {
   font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 6px;
-  color: #0369a1;
+  margin: 0 0 12px;
+  color: var(--rob-blue-dark);
   letter-spacing: 0.02em;
 }
-.rob-download-root .rob-subtitle {
-  color: #64748b;
-  font-size: 0.9rem;
+
+.rob-download-subtitle {
+  color: var(--rob-gray-light);
+  font-size: 1rem;
   margin: 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
 }
-.rob-download-root section {
-  margin-bottom: 28px;
+
+/* ========== 内容区与区块标题 ========== */
+.rob-download-content {
+  padding-top: 16px;
 }
-.rob-download-root section h2 {
-  font-size: 1.25rem;
+
+.rob-download-section {
+  margin-bottom: 36px;
+}
+
+.rob-section-head {
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #0284c7;
-  margin: 0 0 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(2, 132, 199, 0.25);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.rob-download-root .rob-item {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  transition: border-color .2s, box-shadow .2s;
-}
-.rob-download-root .rob-item:hover {
-  border-color: #7dd3fc;
-  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.08);
-}
-.rob-download-root .rob-item.rob-latest {
-  border-color: #7dd3fc;
-  background: #f0f9ff;
-}
-.rob-download-root .rob-item.rob-latest:hover {
-  border-color: #0284c7;
-  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.15);
-}
-.rob-download-root .rob-item-header {
+  color: var(--rob-gray-dark);
+  margin: 0 0 16px;
+  padding: 0;
+  letter-spacing: 0.02em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
+  gap: 10px;
+}
+
+.rob-section-head::before {
+  content: "";
+  width: 4px;
+  height: 1.1em;
+  background: linear-gradient(180deg, var(--rob-blue-light) 0%, var(--rob-blue) 100%);
+  border-radius: 2px;
+}
+
+/* ========== 下载卡片（通用 + 最新突出） ========== */
+.rob-download-root .rob-card {
+  background: var(--rob-white);
+  border: 1px solid var(--rob-border);
+  border-radius: var(--rob-radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--rob-shadow);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.rob-download-root .rob-card:hover {
+  border-color: var(--rob-blue-lighter);
+  box-shadow: var(--rob-shadow-hover);
+}
+
+.rob-download-root .rob-card-latest {
+  border-color: var(--rob-blue-lighter);
+  background: linear-gradient(135deg, var(--rob-blue-bg) 0%, var(--rob-white) 100%);
+  box-shadow: 0 4px 24px rgba(2, 132, 199, 0.12);
+}
+
+.rob-download-root .rob-card-latest:hover {
+  border-color: var(--rob-blue);
+  box-shadow: 0 8px 32px rgba(2, 132, 199, 0.18);
+}
+
+/* 卡片头部 = summary */
+.rob-download-root .rob-card-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 22px;
   cursor: pointer;
   user-select: none;
-  transition: background .15s;
+  transition: background 0.15s;
+  gap: 16px;
+  list-style: none;
 }
-.rob-download-root .rob-item-header:hover {
-  background: rgba(2, 132, 199, 0.06);
+
+.rob-download-root .rob-card summary::-webkit-details-marker,
+.rob-download-root .rob-card summary::marker {
+  display: none;
 }
-.rob-download-root .rob-item.rob-latest .rob-item-header:hover {
+
+.rob-download-root .rob-item-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.rob-download-root .rob-item-actions {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.rob-download-root .rob-card-header::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-left: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0.7;
+  transition: transform 0.2s;
+}
+
+.rob-download-root .rob-card[open] .rob-card-header::after {
+  transform: rotate(180deg);
+}
+
+.rob-download-root .rob-card-header:hover {
+  background: rgba(2, 132, 199, 0.05);
+}
+
+.rob-download-root .rob-card-latest .rob-card-header:hover {
   background: rgba(2, 132, 199, 0.08);
 }
-.rob-download-root .rob-item-title-wrap {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+
+
 .rob-download-root .rob-item-title {
   font-weight: 600;
-  color: #1e293b;
-  font-size: 1rem;
+  color: var(--rob-gray-dark);
+  font-size: 1.05rem;
 }
-.rob-download-root .rob-item.rob-latest .rob-item-title {
-  color: #0369a1;
+
+.rob-download-root .rob-card-latest .rob-item-title {
+  color: var(--rob-blue-dark);
 }
+
 .rob-download-root .rob-item-date {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.875rem;
+  color: var(--rob-gray-light);
   font-weight: 400;
 }
-.rob-download-root .rob-item.rob-latest .rob-item-date {
-  color: #0284c7;
+
+.rob-download-root .rob-card-latest .rob-item-date {
+  color: var(--rob-blue);
 }
-.rob-download-root .rob-item-actions {
-  display: flex;
-  align-items: center;
-}
+
+
+/* 下载按钮 */
 .rob-download-root .rob-btn-download {
-  display: inline-block;
-  padding: 8px 18px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #fff;
-  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-  border-radius: 6px;
-  text-decoration: none;
-  transition: transform .15s, box-shadow .2s;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
-}
-.rob-download-root .rob-btn-download:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
-}
-.rob-download-root .rob-item-body {
-  padding: 0 18px 14px;
-  border-top: 1px solid #e2e8f0;
-}
-.rob-download-root .rob-item.rob-latest .rob-item-body {
-  border-top-color: #bae6fd;
-}
-.rob-download-root .rob-item-body-title {
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #334155;
-  margin: 12px 0 8px;
+  color: var(--rob-white);
+  background: linear-gradient(135deg, var(--rob-blue-light) 0%, var(--rob-blue) 100%);
+  border-radius: var(--rob-radius-sm);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
+}
+
+.rob-download-root .rob-btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+}
+
+/* 卡片展开内容 */
+.rob-download-root .rob-item-body {
+  padding: 0 22px 20px;
+  border-top: 1px solid var(--rob-border);
+}
+
+.rob-download-root .rob-card-latest .rob-item-body {
+  border-top-color: var(--rob-blue-lighter);
+}
+
+.rob-download-root .rob-item-body-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--rob-gray);
+  margin: 14px 0 8px;
   padding: 0;
 }
+
 .rob-download-root .rob-item-body-inner {
   padding: 0;
   margin: 0;
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--rob-gray-light);
 }
+
 .rob-download-root .rob-item-body-inner ul {
   margin: 0;
-  padding-left: 1.25em;
+  padding-left: 1.35em;
   list-style: disc;
 }
+
 .rob-download-root .rob-item-body-inner li {
-  margin-bottom: 4px;
-  line-height: 1.5;
+  margin-bottom: 6px;
+  line-height: 1.55;
 }
-.rob-download-root .rob-item.rob-latest .rob-item-body-inner {
-  color: #334155;
+
+.rob-download-root .rob-card-latest .rob-item-body-inner {
+  color: var(--rob-gray);
 }
-/* details/summary: 隐藏浏览器默认三角 */
-.rob-download-root .rob-item summary {
-  list-style: none;
+
+/* ========== 配置环境：双卡片网格 ========== */
+.rob-config-section .rob-section-head::before {
+  background: linear-gradient(180deg, var(--rob-gold-light) 0%, var(--rob-gold) 100%);
 }
-.rob-download-root .rob-item summary::-webkit-details-marker {
-  display: none;
+
+.rob-config-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
-.rob-download-root .rob-item summary::marker {
-  display: none;
+
+@media (max-width: 640px) {
+  .rob-config-grid {
+    grid-template-columns: 1fr;
+  }
 }
-/* 配置环境 */
-.rob-download-root .rob-config-block {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 14px 18px;
-  transition: border-color .2s, box-shadow .2s;
+
+.rob-config-card {
+  background: var(--rob-white);
+  border: 1px solid var(--rob-border);
+  border-radius: var(--rob-radius);
+  padding: 22px 20px;
+  box-shadow: var(--rob-shadow);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.rob-download-root .rob-config-block:hover {
-  border-color: #7dd3fc;
-  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.08);
+
+.rob-config-card:hover {
+  border-color: var(--rob-blue-lighter);
+  box-shadow: var(--rob-shadow-hover);
 }
-.rob-download-root .rob-config-title {
+
+.rob-config-recommended {
+  border-left: 4px solid var(--rob-blue);
+}
+
+.rob-config-minimum {
+  border-left: 4px solid var(--rob-gold);
+}
+
+.rob-config-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 12px;
+  color: var(--rob-gray-dark);
+  margin: 0 0 16px;
   padding: 0;
 }
-.rob-download-root .rob-config-list {
+
+.rob-config-list {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
-.rob-download-root .rob-config-row {
+
+.rob-config-row {
   display: flex;
-  flex-wrap: nowrap;
-  margin-bottom: 6px;
-  line-height: 1.6;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 12px;
+  line-height: 1.55;
   font-size: 0.9rem;
-  white-space: nowrap;
 }
-.rob-download-root .rob-config-row:last-child {
+
+.rob-config-row:last-child {
   margin-bottom: 0;
 }
-.rob-download-root .rob-config-row dt {
+
+.rob-config-row dt {
   flex-shrink: 0;
   font-weight: 500;
-  color: #334155;
+  color: var(--rob-gray);
   margin: 0;
 }
-.rob-download-root .rob-config-row dd {
-  margin: 0 0 0 4px;
-  color: #475569;
+
+.rob-config-row dt::after {
+  content: "";
+}
+
+.rob-config-row dd {
+  margin: 0;
+  color: var(--rob-gray-light);
+  flex: 1;
+  min-width: 0;
+}
+
+/* 兼容旧类名 */
+.rob-download-root .rob-item,
+.rob-download-root .rob-item-header {
+  /* 已用 .rob-card / .rob-card-header 替代，此处保留空规则便于日后清理 */
 }

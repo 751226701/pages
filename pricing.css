@@ -25,6 +25,12 @@
   --rob-border: #e2e8f0;
   --rob-border-light: #bae6fd;
   
+  /* 阴影和圆角 */
+  --rob-shadow: 0 4px 20px rgba(2, 132, 199, 0.08);
+  --rob-shadow-hover: 0 8px 32px rgba(2, 132, 199, 0.12);
+  --rob-radius: 14px;
+  --rob-radius-sm: 10px;
+  
   /* 渐变 */
   --rob-gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   --rob-gradient-gold: linear-gradient(135deg, #e8b82e 0%, #d4a017 100%);
@@ -35,6 +41,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background: transparent;
+  min-height: 100%;
+}
+
 .rob-pricing-root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   background: transparent;
@@ -43,11 +54,14 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
-  /* 嵌入时：占满容器宽度，不随表格撑开，避免双滚动条 */
   width: 100%;
   max-width: 100%;
   min-width: 0;
   overflow-x: hidden;
+}
+
+.rob-pricing-content {
+  padding-top: 16px;
 }
 
 /* 主内容区：嵌入时避免撑开父级导致外层出现第二条滚动条 */
@@ -56,18 +70,31 @@
   width: 100%;
   min-width: 0;
   margin: 0 auto;
-  padding: 32px 20px 56px;
+  padding: 0 24px 36px;
   text-align: center;
   overflow-x: hidden;
 }
 
-.rob-pricing-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--rob-blue-dark);
-  margin: 0 0 28px;
+/* ========== 区块标题 ========== */
+.rob-section-head {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--rob-gray-dark);
+  margin: 0 0 16px;
+  padding: 0;
   letter-spacing: 0.02em;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.rob-section-head::before {
+  content: "";
+  width: 4px;
+  height: 1.1em;
+  background: linear-gradient(180deg, var(--rob-blue-light) 0%, var(--rob-blue) 100%);
+  border-radius: 2px;
 }
 
 /* 无 JS 嵌入：Tab 用 radio + label，两块内容同一格避免切换时布局错位 */
@@ -181,28 +208,30 @@
   flex-direction: column;
   height: 100%;
   min-height: 280px;
-  background: var(--rob-gray-bg);
-  border-radius: 10px;
+  background: var(--rob-white);
+  border-radius: var(--rob-radius);
   padding: 28px 24px;
   text-align: left;
   border: 1px solid var(--rob-border);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--rob-shadow);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .rob-card:hover {
   border-color: var(--rob-blue-lighter);
-  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.08);
+  box-shadow: var(--rob-shadow-hover);
+  transform: translateY(-2px);
 }
 
 .rob-card-highlight {
   border-color: var(--rob-gold-light);
   background: linear-gradient(to bottom, var(--rob-gold-bg) 0%, var(--rob-blue-bg) 24px);
-  box-shadow: 0 2px 12px rgba(212, 160, 23, 0.12);
+  box-shadow: 0 4px 24px rgba(212, 160, 23, 0.15);
 }
 
 .rob-card-highlight:hover {
   border-color: var(--rob-gold);
-  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.15), 0 0 0 1px rgba(212, 160, 23, 0.25);
+  box-shadow: 0 8px 32px rgba(212, 160, 23, 0.2);
 }
 
 /* 教育版内推荐卡片去掉高亮边框，与普通卡片一致 */
@@ -361,19 +390,10 @@
   width: 100%;
   min-width: 0;
   margin: 0 auto;
-  padding: 32px 20px 56px;
+  padding: 0 24px 36px;
   overflow-x: hidden;
 }
 
-.rob-compare-title {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--rob-blue);
-  text-align: center;
-  margin: 0 0 24px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 
 .rob-compare-table-wrap {
   min-width: 0;
@@ -383,11 +403,11 @@
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   background: var(--rob-white);
-  border-radius: 10px;
+  border-radius: var(--rob-radius);
   border: 1px solid var(--rob-border);
+  box-shadow: var(--rob-shadow);
   contain: layout;
   display: block;
-  /* 先隐藏我们自己的滚动条，嵌入时只保留外层一条 */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -452,10 +472,6 @@
 }
 
 @media (max-width: 768px) {
-  .rob-pricing-title {
-    font-size: 1.25rem;
-  }
-
   .rob-pricing-cards {
     grid-template-columns: 1fr;
   }

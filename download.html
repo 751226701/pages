@@ -10,11 +10,11 @@
 </head>
 <body>
   <div class="rob-download-root">
-
-  <section>
-    <h2>下载最新安装包</h2>
-    <details class="rob-item rob-latest" open>
-      <summary class="rob-item-header">
+  <div class="rob-download-content">
+  <section class="rob-download-section">
+    <h2 class="rob-section-head"><span>最新安装包</span></h2>
+    <details class="rob-card rob-card-latest" open>
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">V1.0.3</span>
           <span class="rob-item-date">2025-02-09</span>
@@ -36,10 +36,10 @@
     </details>
   </section>
 
-  <section>
-    <h2>补丁</h2>
-    <details class="rob-item">
-      <summary class="rob-item-header">
+  <section class="rob-download-section">
+    <h2 class="rob-section-head"><span>补丁</span></h2>
+    <details class="rob-card">
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">1.0.2_patch</span>
           <span class="rob-item-date">2026-02-06</span>
@@ -59,8 +59,8 @@
         </div>
       </div>
     </details>
-    <details class="rob-item">
-      <summary class="rob-item-header">
+    <details class="rob-card">
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">1.0.3_patch</span>
           <span class="rob-item-date">2026-02-09</span>
@@ -80,8 +80,8 @@
         </div>
       </div>
     </details>
-    <!-- <details class="rob-item">
-      <summary class="rob-item-header">
+    <!-- <details class="rob-card">
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">0.9.9_patch</span>
           <span class="rob-item-date">2025-01-28</span>
@@ -101,10 +101,10 @@
     </details> -->
   </section>
 
-  <section>
-    <h2>历史版本</h2>
-    <details class="rob-item">
-      <summary class="rob-item-header">
+  <section class="rob-download-section">
+    <h2 class="rob-section-head"><span>历史版本</span></h2>
+    <details class="rob-card">
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">V1.0.2</span>
           <span class="rob-item-date">2026-02-06</span>
@@ -124,8 +124,8 @@
         </div>
       </div>
     </details>
-    <!-- <details class="rob-item">
-      <summary class="rob-item-header">
+    <!-- <details class="rob-card">
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">V0.9.0</span>
           <span class="rob-item-date">2025-01-20</span>
@@ -143,8 +143,8 @@
         </div>
       </div>
     </details> -->
-    <details class="rob-item">
-      <summary class="rob-item-header">
+    <details class="rob-card">
+      <summary class="rob-card-header">
         <span class="rob-item-title-wrap">
           <span class="rob-item-title">V0.8.0</span>
           <span class="rob-item-date">2025-01-10</span>
@@ -164,9 +164,10 @@
     </details>
   </section>
 
-  <section>
-    <h2>配置环境</h2>
-    <div class="rob-config-block">
+  <section class="rob-download-section rob-config-section">
+    <h2 class="rob-section-head"><span>配置环境</span></h2>
+    <div class="rob-config-grid">
+    <div class="rob-config-card rob-config-recommended">
       <h3 class="rob-config-title">推荐配置</h3>
       <dl class="rob-config-list">
         <div class="rob-config-row">
@@ -191,7 +192,7 @@
         </div>
       </dl>
     </div>
-    <div class="rob-config-block">
+    <div class="rob-config-card rob-config-minimum">
       <h3 class="rob-config-title">最低配置</h3>
       <dl class="rob-config-list">
         <div class="rob-config-row">
@@ -216,7 +217,9 @@
         </div>
       </dl>
     </div>
+    </div>
   </section>
-</div>
+  </div>
+  </div>
 </body>
 </html>
