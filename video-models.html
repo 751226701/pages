@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 视频生成模型目录 - RoboAI</title>
+  <link rel="stylesheet" href="video-models.css">
+</head>
+<body>
+  <div class="rob-video-root">
+    <!-- Hero 区域 -->
+    <header class="rob-video-hero">
+      <div class="rob-hero-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="23 7 16 12 23 17 23 7"></polygon>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+        </svg>
+      </div>
+      <h1 class="rob-hero-title">AI 视频生成模型目录</h1>
+      <p class="rob-hero-subtitle">探索目前最优秀的 AI 视频生成模型，从文本到视频，一键生成创意内容</p>
+    </header>
+
+    <!-- 筛选器 -->
+    <div class="rob-filter-bar">
+      <div class="rob-filter-group">
+        <label class="rob-filter-label">类型</label>
+        <select id="typeFilter" class="rob-filter-select">
+          <option value="all">全部</option>
+          <option value="text-to-video">文本到视频</option>
+          <option value="image-to-video">图像到视频</option>
+          <option value="video-to-video">视频到视频</option>
+        </select>
+      </div>
+      <div class="rob-filter-group">
+        <label class="rob-filter-label">厂商</label>
+        <select id="companyFilter" class="rob-filter-select">
+          <option value="all">全部</option>
+          <option value="OpenAI">OpenAI</option>
+          <option value="Google">Google</option>
+          <option value="Meta">Meta</option>
+          <option value="Runway">Runway</option>
+          <option value="Pika">Pika</option>
+          <option value="Luma">Luma AI</option>
+          <option value="Kling">快手 Kling</option>
+          <option value="Kling">可灵</option>
+          <option value="Pika">字节跳动</option>
+        </select>
+      </div>
+      <div class="rob-filter-group">
+        <label class="rob-filter-label">价格</label>
+        <select id="priceFilter" class="rob-filter-select">
+          <option value="all">全部</option>
+          <option value="free">免费</option>
+          <option value="freemium">免费+付费</option>
+          <option value="paid">付费</option>
+        </select>
+      </div>
+      <div class="rob-search-box">
+        <input type="text" id="searchInput" placeholder="搜索模型..." class="rob-search-input">
+      </div>
+    </div>
+
+    <!-- 模型统计 -->
+    <div class="rob-stats-bar">
+      <span class="rob-stats-item">共 <strong id="modelCount">0</strong> 个模型</span>
+      <div class="rob-sort-options">
+        <label>排序：</label>
+        <select id="sortSelect" class="rob-filter-select rob-filter-select-sm">
+          <option value="popularity">热门程度</option>
+          <option value="recent">最新发布</option>
+          <option value="name">名称</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 模型卡片网格 -->
+    <div id="modelGrid" class="rob-model-grid">
+      <!-- 模型卡片将通过 JavaScript 动态插入 -->
+    </div>
+
+    <!-- 详细模型信息弹窗 -->
+    <div id="modelModal" class="rob-modal">
+      <div class="rob-modal-content">
+        <button class="rob-modal-close" id="closeModal">&times;</button>
+        <div id="modalBody">
+          <!-- 弹窗内容将通过 JavaScript 动态插入 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="video-models-data.js"></script>
+  <script src="video-models.js"></script>
+</body>
+</html>
