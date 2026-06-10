@@ -1,4 +1,4 @@
-/* ========== 变量与基础 ========== */
+/* ========== 1. 变量与基础作用域隔离 ========== */
 .rob-download-root {
   --rob-blue: #0284c7;
   --rob-blue-dark: #0369a1;
@@ -17,19 +17,8 @@
   --rob-shadow-hover: 0 8px 32px rgba(2, 132, 199, 0.12);
   --rob-radius: 14px;
   --rob-radius-sm: 10px;
-}
 
-.rob-download-root,
-.rob-download-root * {
-  box-sizing: border-box;
-}
-
-body {
-  background: transparent;
-  min-height: 100%;
-}
-
-.rob-download-root {
+  /* 基础排版重置 */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   max-width: 860px;
   margin: 0 auto;
@@ -38,9 +27,17 @@ body {
   color: var(--rob-gray);
   font-size: 16px;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* ========== 顶部 Hero ========== */
+/* 全局盒模型重置 */
+.rob-download-root *,
+.rob-download-root *::before,
+.rob-download-root *::after {
+  box-sizing: border-box;
+}
+
+/* ========== 2. 顶部 Hero 区域 ========== */
 .rob-download-hero {
   text-align: center;
   padding: 48px 24px 40px;
@@ -67,7 +64,7 @@ body {
   line-height: 1.65;
 }
 
-/* ========== 内容区与区块标题 ========== */
+/* ========== 3. 内容区与区块标题 ========== */
 .rob-download-content {
   padding-top: 16px;
 }
@@ -96,91 +93,117 @@ body {
   border-radius: 2px;
 }
 
-/* ========== 下载卡片（通用 + 最新突出） ========== */
-.rob-download-root .rob-card {
+/* ========== 4. 下载卡片（核心修复区） ========== */
+
+/* 4.1 卡片容器 (Details) */
+.rob-download-root details.rob-card {
+  display: block !important; /* 防止被改为 flex/grid */
   background: var(--rob-white);
   border: 1px solid var(--rob-border);
   border-radius: var(--rob-radius);
   margin-bottom: 12px;
-  overflow: hidden;
+  overflow: hidden; /* 【关键】裁剪圆角，防止内部内容溢出 */
   box-shadow: var(--rob-shadow);
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+
+  /* 【关键修复】清除默认高度和边距，解决收起后留白问题 */
+  min-height: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: 12px !important;
 }
 
-.rob-download-root .rob-card:hover {
+.rob-download-root details.rob-card:hover {
   border-color: var(--rob-blue-lighter);
   box-shadow: var(--rob-shadow-hover);
 }
 
-.rob-download-root .rob-card-latest {
+/* 4.2 最新卡片特殊样式 */
+.rob-download-root details.rob-card-latest {
   border-color: var(--rob-blue-lighter);
   background: linear-gradient(135deg, var(--rob-blue-bg) 0%, var(--rob-white) 100%);
   box-shadow: 0 4px 24px rgba(2, 132, 199, 0.12);
 }
 
-.rob-download-root .rob-card-latest:hover {
+.rob-download-root details.rob-card-latest:hover {
   border-color: var(--rob-blue);
   box-shadow: 0 8px 32px rgba(2, 132, 199, 0.18);
 }
 
-/* 卡片头部 = summary */
-.rob-download-root .rob-card-header {
-  display: flex;
+/* 4.3 卡片头部 (Summary) */
+.rob-download-root summary.rob-card-header {
+  display: flex !important; /* 强制 Flex 布局 */
   align-items: center;
   padding: 18px 22px;
   cursor: pointer;
   user-select: none;
+  list-style: none; /* 清除默认三角 */
+  outline: none;    /* 清除点击时的黑框 */
+
+  /* 【关键修复】确保背景铺满且文字不换行 */
+  width: 100%;
+  white-space: nowrap;
   transition: background 0.15s;
   gap: 16px;
-  list-style: none;
+
+  /* 隐藏 Webkit 浏览器默认的三角图标 */
+  &::-webkit-details-marker {
+    display: none;
+  }
 }
 
-.rob-download-root .rob-card summary::-webkit-details-marker,
-.rob-download-root .rob-card summary::marker {
-  display: none;
-}
-
-.rob-download-root .rob-item-title-wrap {
-  flex: 1;
-  min-width: 0;
-}
-
-.rob-download-root .rob-item-actions {
-  flex-shrink: 0;
-  margin-left: auto;
-}
-
-.rob-download-root .rob-card-header::after {
-  content: "";
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  margin-left: 8px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
-  opacity: 0.7;
-  transition: transform 0.2s;
-}
-
-.rob-download-root .rob-card[open] .rob-card-header::after {
-  transform: rotate(180deg);
-}
-
-.rob-download-root .rob-card-header:hover {
+/* 悬停高亮修复：直接作用于 Summary，利用父级 overflow:hidden 实现圆角效果 */
+.rob-download-root summary.rob-card-header:hover {
   background: rgba(2, 132, 199, 0.05);
 }
 
-.rob-download-root .rob-card-latest .rob-card-header:hover {
+.rob-download-root details.rob-card-latest summary.rob-card-header:hover {
   background: rgba(2, 132, 199, 0.08);
 }
 
+/* ========== 4.4 头部内容布局 (已修改) ========== */
+.rob-download-root .rob-item-title-wrap {
+  flex: 1;
+  min-width: 0; /* 允许截断 */
+  
+  /* --- 修改开始 --- */
+  display: flex;
+  flex-direction: row;    /* 1. 改为横向排列 (默认值) */
+  align-items: center;    /* 2. 垂直居中对齐 */
+  gap: 12px;              /* 3. 调整间距，让视觉更紧凑 */
+  white-space: nowrap;    /* 4. 【关键】强制不换行 */
+  /* --- 修改结束 --- */
+}
 
+/* 版本号样式 (微调字体大小和粗细) */
+.rob-download-root .rob-item-title {
+  font-weight: 700;       /* 加粗一点 */
+  color: var(--rob-gray-dark);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+/* 时间样式 (微调) */
+.rob-download-root .rob-item-date {
+  font-size: 0.875rem;
+  color: var(--rob-gray-light);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+/* 4.5 文本样式 */
 .rob-download-root .rob-item-title {
   font-weight: 600;
   color: var(--rob-gray-dark);
   font-size: 1.05rem;
+  line-height: 1.4;
 }
 
-.rob-download-root .rob-card-latest .rob-item-title {
+.rob-download-root details.rob-card-latest .rob-item-title {
   color: var(--rob-blue-dark);
 }
 
@@ -190,16 +213,16 @@ body {
   font-weight: 400;
 }
 
-.rob-download-root .rob-card-latest .rob-item-date {
+.rob-download-root details.rob-card-latest .rob-item-date {
   color: var(--rob-blue);
 }
 
-
-/* 下载按钮 */
+/* 4.6 下载按钮 */
 .rob-download-root .rob-btn-download {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
+  justify-content: center;
+  padding: 8px 20px;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--rob-white);
@@ -208,6 +231,7 @@ body {
   text-decoration: none;
   transition: transform 0.15s, box-shadow 0.2s;
   box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
+  white-space: nowrap;
 }
 
 .rob-download-root .rob-btn-download:hover {
@@ -215,13 +239,19 @@ body {
   box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
 }
 
-/* 卡片展开内容 */
+/* 4.7 卡片展开内容区 */
 .rob-download-root .rob-item-body {
   padding: 0 22px 20px;
   border-top: 1px solid var(--rob-border);
+  animation: fadeIn 0.3s ease;
 }
 
-.rob-download-root .rob-card-latest .rob-item-body {
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rob-download-root details.rob-card-latest .rob-item-body {
   border-top-color: var(--rob-blue-lighter);
 }
 
@@ -251,11 +281,11 @@ body {
   line-height: 1.55;
 }
 
-.rob-download-root .rob-card-latest .rob-item-body-inner {
+.rob-download-root details.rob-card-latest .rob-item-body-inner {
   color: var(--rob-gray);
 }
 
-/* ========== 配置环境：双卡片网格 ========== */
+/* ========== 5. 配置环境：双卡片网格 ========== */
 .rob-config-section .rob-section-head::before {
   background: linear-gradient(180deg, var(--rob-gold-light) 0%, var(--rob-gold) 100%);
 }
@@ -328,16 +358,9 @@ body {
   margin: 0;
 }
 
-.rob-config-row dt::after {
-  content: "";
-}
-
 .rob-config-row dd {
   margin: 0;
   color: var(--rob-gray-light);
   flex: 1;
   min-width: 0;
 }
-
-
-
